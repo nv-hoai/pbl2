@@ -25,7 +25,7 @@ void human::change_first_name(const string & newname){
     first_name= newname;
 }
 void human::change_last_name(const string & newname){
-    last_name= newname
+    last_name= newname;
 }
 void human::change_age(int newage){
     age= newage;

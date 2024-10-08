@@ -2,6 +2,7 @@
 #include "human.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 int customer:: cout_customer=0;
@@ -14,13 +15,11 @@ customer::customer()
 
 customer::customer(string a, string b, int x, string c )
 {
-    human(string a, string b, int x, string c);
+    human(a, b, x, c);
     customer_id= ++ cout_customer;
 }
-customer::customer(const customer&h){
-    human(h);
-     customer_id= h.customer_id;
-
+customer::customer(const customer&h): human(h) {
+    customer_id= h.customer_id;
 }
 void customer::diplay_customer() const{
     cout<<"Customer ID: "<<customer_id<<endl;
@@ -37,6 +36,7 @@ void customer::use_service(){
 }
 int customer::pay(){
     cout <<"Customer "<<customer_id<<" has paid for the service."<<endl;
+    return 0;
 }
 void customer::stop_use_service(){
     cout<<"Customer "<<customer_id<<" stopped using the service."<<endl;
