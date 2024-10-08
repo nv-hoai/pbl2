@@ -49,5 +49,6 @@ ostream& operator <<(ostream& out, const food& f){
     else{
         cout<<"hang het.";
     }
-    
+
+    return out;
 }
