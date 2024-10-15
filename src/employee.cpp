@@ -8,7 +8,7 @@ employee::employee(){
     human();
     employee_cout++;
     position ="Unknow";
-    employee_id=employ_cout;
+    employee_id=employee_cout;
     month_worked=0;
     days_month=0;
     total_earning=0;
@@ -18,14 +18,14 @@ employee::employee(){
 }
 employee::employee(string a, string b, string c, int d, string e,string position, int month, int days, int salary){
     human(a,b,d,c);
-    employ_cout++;
+    employee_cout++;
     this->position= position;
     this->month_worked=month;
     this->days_month=days;
     this->start_time=0;
     this->base_salary=salary;
     this->total_earning=0;
-    employee_id=employ_cout;
+    employee_id=employee_cout;
     time_worked=0;
 }
 employee::employee(const employee& x):human(x)

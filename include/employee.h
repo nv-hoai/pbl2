@@ -9,7 +9,7 @@ using namespace std;
 class employee : public human
 {
 private:
-    static int employ_cout;
+    static int employee_cout;
     int employee_id;
     string position;
     int month_worked;

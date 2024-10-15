@@ -9,15 +9,15 @@ private:
     string first_name;
     string last_name;
     int age;
-    string gender;
+    bool gender;
 public:
     human();
-    human(string a, string b, int c, string d);
+    human(string first_name, string last_name, int age, bool gender);
     human(const human& person);
     void change_first_name(const string & newname);
     void change_last_name(const string& newname);
     void change_age(int newage);
-    void change_gender(const string& newgender);
+    void change_gender(const bool& newgender);
     void displayHuman() const;
 
 };
