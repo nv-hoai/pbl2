@@ -18,6 +18,7 @@ public:
     void update_state();
     bool get_state();
     friend ostream& operator <<(ostream& out, const food& f);
+    friend istream& operator >>(istream& in, food& f );
 };
 #endif
 
