@@ -3,10 +3,10 @@
 #include <string>
 using namespace std;
 
-int employee::employee_cout =0;
+int employee::employ_cout =0;
 employee::employee(){
     human();
-    employee_cout++;
+    employ_cout++;
     position ="Unknow";
     employee_id=employee_cout;
     month_worked=0;
