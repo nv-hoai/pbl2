@@ -3,10 +3,9 @@
 #include <string>
 using namespace std;
 
-int employee::employ_cout =0;
-employee::employee(){
-    human();
-    employ_cout++;
+int employee::employee_cout =0;
+employee::employee(): human(){
+    employee_cout++;
     position ="Unknow";
     employee_id=employee_cout;
     month_worked=0;
@@ -16,8 +15,9 @@ employee::employee(){
     base_salary=0;
     time_worked=0;
 }
-employee::employee(string a, string b, string c, int d, string e,string position, int month, int days, int salary){
-    human(a,b,d,c);
+employee::employee(string first_name, string last_name, int age, bool gender, 
+                    string e, string position, int month, int days, int salary):
+                    human(first_name, last_name, age, gender){
     employee_cout++;
     this->position= position;
     this->month_worked=month;
@@ -28,7 +28,7 @@ employee::employee(string a, string b, string c, int d, string e,string position
     employee_id=employee_cout;
     time_worked=0;
 }
-employee::employee(const employee& x):human(x)
+employee::employee(const employee& x): human(x)
 {
     employee_id=x.employee_id;
     position=x.position;

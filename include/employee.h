@@ -20,7 +20,7 @@ private:
     int time_worked;
 public:
     employee();
-    employee(string a, string b, string c, int d, string e,string position, int month, int days, int salary);
+    employee(string, string , int , bool, string e,string position, int month, int days, int salary);
     employee( const employee &x);
     void checking_start(int time_start);
     void checking_end(int time_end);

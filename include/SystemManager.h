@@ -10,7 +10,7 @@
 
 #include "double_linked_list.h"
 
-class Manager {
+class SystemManager {
     DoublyLinkedList<customer> customers;
     DoublyLinkedList<Computer> computers;
     DoublyLinkedList<employee> employees;
@@ -18,9 +18,9 @@ class Manager {
     DoublyLinkedList<Receipt> receipts;
     DoublyLinkedList<food> foods;
 public:
-    Manager();
-    Manager(const Manager&);
-    ~Manager();
+    SystemManager();
+    SystemManager(const SystemManager&);
+    ~SystemManager();
 
     void load_data();
     void add_computer();

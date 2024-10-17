@@ -56,7 +56,7 @@ istream& operator >>(istream& in, food& f ){
     cout<<"food's name: ";
     getline(in,f.name);
     cout<<"food's cost: ";
-    in>>f.cost
+    in>> f.cost;
     cout<<"food's remain: ";
     in>>f.remain;
     if (f.remain !=0)

@@ -13,8 +13,8 @@ private:
     int customer_id;
 public:
     customer();
-    customer(string a, string b, int x, string c);
-    customer(const customer& h);
+    customer(string first_name, string last_name, int age, bool gender);
+    customer(const customer& other);
     void diplay_customer() const;
     int getCustomerID() const;
 };

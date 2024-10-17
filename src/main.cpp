@@ -1,22 +1,37 @@
+#include <iostream>
 #include "double_linked_list.h"
 
+using namespace std;
+
+// Example usage
 int main() {
-    DoublyLinkedList<int> myList;
-    myList.push_front(10);
-    myList.push_back(20);
-    myList.push_back(30);
+    DoublyLinkedList<int> list;
 
-    std::cout << "List size: " << myList.size() << std::endl;
-    std::cout << "First element: " << myList.head()->data << std::endl;
-    std::cout << "Last element: " << myList.tail()->data << std::endl;
+    list.append(10);
+    list.append(20);
+    list.append(30);
+    list.prepend(5);
 
-    DoublyLinkedList<int>::Node *n1= myList.search(20);
-    myList.remove(n1);
-    myList.display();
+    cout << "List: ";
+    list.display();
 
-    myList.pop_front();
-    myList.pop_back();
-    std::cout << "List size after pop_front and pop_back: " << myList.size() << std::endl;
+    // Find a value
+    auto it = list.find(20);
+    if (it != list.end())
+        cout << "Found: " << *it << endl;
+    else
+        cout << "Value not found" << endl;
+
+    // Use iterator to traverse the list
+    cout << "Iterating forward: ";
+    for (auto iter = list.begin(); iter != list.end(); ++iter)
+        cout << *iter << " ";
+    cout << endl;
+
+    // Deleting a node
+    list.deleteNode(it);
+    cout << "List after deletion: ";
+    list.display();
 
     return 0;
 }
