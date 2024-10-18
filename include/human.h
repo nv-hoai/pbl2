@@ -1,6 +1,8 @@
 #ifndef human_h
 #define human_h
-#include<string>
+
+#include <iostream>
+#include <string>
 using namespace std;
 
 class human
@@ -11,15 +13,16 @@ private:
     int age;
     bool gender;
 public:
-    human();
-    human(string first_name, string last_name, int age, bool gender);
+    human(string first_name = "Unknown", string last_name ="", int age = 0, bool gender = 0);
     human(const human& person);
     void change_first_name(const string & newname);
     void change_last_name(const string& newname);
     void change_age(int newage);
     void change_gender(const bool& newgender);
-    void displayHuman() const;
 
+    friend istream& operator>>(istream&, human&);
+    friend ostream& operator<<(ostream&, const human&); 
 };
+
 #endif
 

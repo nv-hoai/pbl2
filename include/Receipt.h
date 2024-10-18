@@ -10,7 +10,7 @@ typedef unsigned int uint32;
 class Receipt {
     uint32 receipt_id;
     uint32 custumer_id;
-    DoublyLinkedList<service> used_services;
+    // DoublyLinkedList<service> used_services;
     Date date_time;
     float payment;
 public:

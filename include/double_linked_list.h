@@ -7,11 +7,11 @@ class DoublyLinkedList {
 private:
     // Node structure
     struct Node {
-        T data;
+        T* data;
         Node* prev;
         Node* next;
 
-        Node(T value) : data(value), prev(nullptr), next(nullptr) {}
+        Node(T* value) : data(value), prev(nullptr), next(nullptr) {}
     };
 
     Node* head;
@@ -29,7 +29,7 @@ public:
 
         // Overload dereference operator
         T& operator*() const {
-            return current->data;
+            return *current->data;
         }
 
         // Overload prefix increment operator
@@ -65,13 +65,14 @@ public:
         Node* current = head;
         while (current != nullptr) {
             Node* next = current->next;
+            delete current->data;
             delete current;
             current = next;
         }
     }
 
     // Append to the end of the list
-    void append(const T& value) {
+    void append(T* value) {
         Node* newNode = new Node(value);
         if (tail == nullptr) {  // List is empty
             head = newNode;
@@ -84,7 +85,7 @@ public:
     }
 
     // Prepend to the beginning of the list
-    void prepend(const T& value) {
+    void prepend(T* value) {
         Node* newNode = new Node(value);
         if (head == nullptr) {  // List is empty
             head = newNode;
@@ -97,10 +98,10 @@ public:
     }
 
     // Find a value in the list
-    Iterator find(const T& value) {
+    Iterator find(typename T::id_type id) {
         Node* current = head;
         while (current != nullptr) {
-            if (current->data == value)
+            if (current->data->get_id() == id)
                 return Iterator(current);
             current = current->next;
         }

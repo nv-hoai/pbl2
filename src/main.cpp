@@ -1,37 +1,19 @@
 #include <iostream>
 #include "double_linked_list.h"
+#include "SystemManager.h"
 
 using namespace std;
 
 // Example usage
 int main() {
-    DoublyLinkedList<int> list;
+    SystemManager MyManager;
 
-    list.append(10);
-    list.append(20);
-    list.append(30);
-    list.prepend(5);
+    MyManager.add_computer();
+    MyManager.add_computer();
+    MyManager.show_all_computers();
 
-    cout << "List: ";
-    list.display();
-
-    // Find a value
-    auto it = list.find(20);
-    if (it != list.end())
-        cout << "Found: " << *it << endl;
-    else
-        cout << "Value not found" << endl;
-
-    // Use iterator to traverse the list
-    cout << "Iterating forward: ";
-    for (auto iter = list.begin(); iter != list.end(); ++iter)
-        cout << *iter << " ";
-    cout << endl;
-
-    // Deleting a node
-    list.deleteNode(it);
-    cout << "List after deletion: ";
-    list.display();
+    MyManager.update_computer_device_state(0, 0, 0);
+    MyManager.show_all_computers();
 
     return 0;
 }

@@ -3,22 +3,44 @@
 
 #include <string>
 #include "double_linked_list.h"
+#include "device.h"
+#include <iostream>
 
-typedef unsigned int uint32;
+using namespace std;
 
-class Device;
+enum ComputerState {
+    Idle, Busy, Cracked
+};
 
 class Computer {
-    uint32 computer_id;
-    std::string computer_info;
-    DoublyLinkedList<Device> dv;
-    bool current_state;
-
-    static uint32 count;
 public:
-    Computer();
+    typedef unsigned int id_type;
+
+    Computer(std::string c_info = "No info", ComputerState c_state = Idle);
     Computer(const Computer&);
     ~Computer();
+
+    id_type get_id() const {
+        return id;
+    }
+
+    void add_device(std::string device_name);
+    void update_device_state(Device::id_type id, bool state);
+    void show_all_devices();
+    void update_position(int position) {
+        position = position;
+    }
+
+    friend istream& operator>>(istream&, Computer&);
+    friend ostream& operator<<(ostream&, const Computer&);
+private:
+    id_type id;
+    int position;
+    std::string info;
+    DoublyLinkedList<Device> devices;
+    ComputerState current_state;
+
+    static id_type computer_count;
 };
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 
+#include <iostream>
+#include <fstream>
 #include "Computer.h"
 #include "customer.h"
 #include "employee.h"
@@ -13,16 +15,29 @@
 class SystemManager {
     DoublyLinkedList<customer> customers;
     DoublyLinkedList<Computer> computers;
-    DoublyLinkedList<employee> employees;
-    DoublyLinkedList<service> services;
-    DoublyLinkedList<Receipt> receipts;
-    DoublyLinkedList<food> foods;
+    // DoublyLinkedList<employee> employees;
+    // DoublyLinkedList<service> services;
+    // DoublyLinkedList<Receipt> receipts;
+    // DoublyLinkedList<food> foods;
+
+    template <typename T> void load_data(const char* path, DoublyLinkedList<T> &list) {
+        std::ifstream file(path, ios_base::in);
+        if (!file.is_open()) {
+            std::cout << "Can't not open file with the specific path!\n";
+            return;
+        }
+
+        for (auto iter=list.begin(); iter!= list.end(); ++iter) {
+            std::cin >> *iter;
+        }
+
+        file.close();
+    }
 public:
-    SystemManager();
+    SystemManager() = default;
     SystemManager(const SystemManager&);
     ~SystemManager();
 
-    void load_data();
     void add_computer();
     void delete_computer();
     void add_customer();
@@ -49,10 +64,7 @@ public:
     void change_service_fee();
     void change_employee_salary();
     void change_employee_position();
-    void get_customer();
-    void get_computer();
-    void get_service();
-    void get_receipt();
+    void update_computer_device_state(Computer::id_type, Device::id_type, bool state);
 };
 
 #endif

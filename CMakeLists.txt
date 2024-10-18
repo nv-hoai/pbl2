@@ -6,7 +6,10 @@ list(APPEND SOURCES "src/main.cpp"
                     "src/food.cpp"
                     "src/customer.cpp"
                     "src/human.cpp"
-                    "src/employee.cpp")
+                    "src/employee.cpp"
+                    "src/system_manager.cpp"
+                    "src/computer.cpp"
+                    "src/device.cpp")
 
 add_executable(main ${SOURCES})
 

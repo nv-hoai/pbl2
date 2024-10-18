@@ -4,26 +4,17 @@
 
 using namespace std;
 
-int customer:: cout_customer=0;
-customer::customer()
-{
-    human();
-    cout_customer++;
-    customer_id= cout_customer;
-}
+customer::id_type customer::customer_count=0;
 
 customer::customer(string first_name, string last_name, int age, bool gender ): human(first_name, last_name, age, gender) {
-    customer_id= ++ cout_customer;
-}
-customer::customer(const customer&h): human(h) {
-    customer_id= h.customer_id;
-}
-void customer::diplay_customer() const{
-    cout<<"Customer ID: "<<customer_id<<endl;
-    displayHuman();
-   
+    id = customer_count++;
 }
 
-int customer::getCustomerID() const{
-    return customer_id;
+customer::customer(const customer&h): human(h) {
+    id = customer_count++;
+}
+
+ostream& operator<<(ostream& os, const customer& c) {
+    os << "Customer ID: "<< c.id << endl;
+    os << (human&)c;
 }
