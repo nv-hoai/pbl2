@@ -2,6 +2,7 @@
 #define human_h
 
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -19,7 +20,7 @@ public:
     void change_last_name(const string& newname);
     void change_age(int newage);
     void change_gender(const bool& newgender);
-
+    
     friend istream& operator>>(istream&, human&);
     friend ostream& operator<<(ostream&, const human&); 
 };

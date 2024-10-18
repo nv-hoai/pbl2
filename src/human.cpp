@@ -26,6 +26,7 @@ void human::change_gender(const bool& newgender){
 }
 
 istream& operator>>(istream& is, human& h) {
+    //use to get input from keyboard only
     cout << "First name: "; is >> h.first_name;
     cout << "Last name: "; is >> h.last_name;
     cout << "Age: "; is >> h.age;

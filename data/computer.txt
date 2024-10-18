@@ -1,0 +1,4 @@
+Corei5-12450HX 6GB-RAM 122HZ ; 2 ; Idle ; 0 1 1 1
+Corei5-12450HX 6GB-RAM 122HZ ; 1 ; Busy ; 1 1 1 1
+Corei5-12450HX 6GB-RAM 122HZ ; 3 ; Cracked ; 0 0 1 1
+Corei5-12450HX 6GB-RAM 122HZ ; 0 ; Busy ; 1 1 1 1

@@ -8,6 +8,7 @@ Computer::Computer(std::string c_info, ComputerState c_state): info(c_info), cur
     add_device("monitor");
     add_device("keyboard");
     add_device("mouse");
+    add_device("headphone");
 }
 
 Computer::Computer(const Computer& other) {
@@ -15,7 +16,10 @@ Computer::Computer(const Computer& other) {
     info = other.info;
     current_state = Idle;
     position = -1;
-    //additional work needed for devices
+    add_device("monitor");
+    add_device("keyboard");
+    add_device("mouse");
+    add_device("headphone");
 }
 
 Computer::~Computer() {
@@ -40,10 +44,18 @@ void Computer::show_all_devices() {
 }
 
 istream& operator>>(istream& is, Computer& c) {
+    //use to get input from keyboard only
     std::cout << "Enter info for the computer: ";
     std::getline(is, c.info);
+    std::cout << "Enter the position of computer: ";
+    is >> c.position;
+    std::string t;
+    std::cout << "Enter the computer's state (Idle/Busy/Cracked): ";
+    is >> t;
+    (t=="Idle")?c.current_state=Idle:(t=="Busy")?c.current_state=Busy:c.current_state=Cracked;
     return is;
 }
+
 ostream& operator<<(ostream& os, const Computer& c) {
     os << "Computer ID: "<< c.id;
     os << "\tComputer position: " << c.position;
@@ -52,4 +64,24 @@ ostream& operator<<(ostream& os, const Computer& c) {
     os << "\tComputer state: " << ((c.current_state == Idle)?"Idle":(c.current_state == Busy)?"Busy":"Cracked") << "\n"; 
     os << "\tComputer infomation: " << c.info << "\n";
     return os;
+}
+
+stringstream& operator>>(stringstream& ss, Computer& c) {
+    //use to get input from file only
+    char t;
+    std::string str;
+    ss >> str; c.info = str+" "; ss >> str; c.info+=str + " "; ss >> str; c.info+=str; ss >> t; //ss>>t to ignore the separator ';'
+    ss >> c.position; ss >> t;
+    ss >> str; ss >> t;
+    c.current_state = (str=="Idle")?Idle:(str=="Busy")?Busy:Cracked;
+
+    bool dv_states[4];
+    for(int i=0; i<4; i++)
+        ss >> dv_states[i];
+
+    int i=0;
+    for(auto iter=c.devices.begin(); iter!=c.devices.end(); ++iter)
+        (*iter).update_state(dv_states[i++]);
+
+    return ss;
 }

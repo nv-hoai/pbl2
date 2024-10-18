@@ -1,0 +1,2 @@
+Nguyen Van ; A ; 18 ; 0
+Nguyen Van ; B ; 18 ; 1

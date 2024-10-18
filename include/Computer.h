@@ -5,6 +5,7 @@
 #include "double_linked_list.h"
 #include "device.h"
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -32,6 +33,7 @@ public:
     }
 
     friend istream& operator>>(istream&, Computer&);
+    friend stringstream& operator>>(stringstream&, Computer&);
     friend ostream& operator<<(ostream&, const Computer&);
 private:
     id_type id;

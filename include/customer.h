@@ -4,6 +4,7 @@
 #include "human.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 class customer : public human {

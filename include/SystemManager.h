@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "Computer.h"
 #include "customer.h"
 #include "employee.h"
@@ -20,27 +21,16 @@ class SystemManager {
     // DoublyLinkedList<Receipt> receipts;
     // DoublyLinkedList<food> foods;
 
-    template <typename T> void load_data(const char* path, DoublyLinkedList<T> &list) {
-        std::ifstream file(path, ios_base::in);
-        if (!file.is_open()) {
-            std::cout << "Can't not open file with the specific path!\n";
-            return;
-        }
-
-        for (auto iter=list.begin(); iter!= list.end(); ++iter) {
-            std::cin >> *iter;
-        }
-
-        file.close();
-    }
 public:
     SystemManager() = default;
     SystemManager(const SystemManager&);
     ~SystemManager();
 
-    void add_computer();
+    void load_data(const char* path[]);
+
+    Computer& add_computer(bool add_type = 0);
     void delete_computer();
-    void add_customer();
+    customer& add_customer(bool add_type = 0);
     void delete_customer();
     void add_employee();
     void delete_employee();
