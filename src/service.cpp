@@ -1,5 +1,3 @@
-#include<iostream>
-#include<string>
 #include "service.h"
 
 using namespace std;
@@ -30,9 +28,9 @@ service::service(const service&f){
     service_type=f.service_type;
     service_cost=f.service_cost;
     service_name=f.service_name;
-    total_cost=f.total_cost
-
+    total_cost=f.total_cost;
 }
+
 void service::change_cost(int new_cost){
     service_cost= new_cost;
 }

@@ -1,0 +1,2 @@
+Nguyen Van ; A ; 18 ; 0 ; Waitress ; 7 ; 24 ; 500 
+Nguyen Van ; B ; 18 ; 1 ; Helper ; 7 ; 24 ; 500

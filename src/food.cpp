@@ -1,7 +1,4 @@
 #include"food.h"
-#include<string>
-#include<iostream>
-using namespace std;
 
 int food::count=0;
 food::food()

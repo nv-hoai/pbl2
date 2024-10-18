@@ -1,8 +1,4 @@
 #include "customer.h"
-#include <iostream>
-#include <string>
-
-using namespace std;
 
 customer::id_type customer::customer_count=0;
 
@@ -24,4 +20,10 @@ ostream& operator<<(ostream& os, const customer& c) {
     os << "Customer ID: "<< c.id << endl;
     os << (human&)c;
     return os;
+}
+
+stringstream& operator>>(stringstream& ss, customer& c) {
+    char t;
+    ss >> (human&)c;
+    return ss;
 }

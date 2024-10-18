@@ -1,6 +1,9 @@
 #ifndef food_h
 #define food_h
+
 #include <string>
+#include <iostream>
+
 using namespace std;
 
 class food

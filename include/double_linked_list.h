@@ -1,4 +1,6 @@
-#pragma once
+#ifndef double_linked_list_h
+#define double_linked_list_h
+
 #include <iostream>
 using namespace std;
 
@@ -148,3 +150,5 @@ public:
         cout << endl;
     }
 };
+
+#endif

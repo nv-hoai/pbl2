@@ -16,7 +16,7 @@
 class SystemManager {
     DoublyLinkedList<customer> customers;
     DoublyLinkedList<Computer> computers;
-    // DoublyLinkedList<employee> employees;
+    DoublyLinkedList<employee> employees;
     // DoublyLinkedList<service> services;
     // DoublyLinkedList<Receipt> receipts;
     // DoublyLinkedList<food> foods;
@@ -32,7 +32,7 @@ public:
     void delete_computer();
     customer& add_customer(bool add_type = 0);
     void delete_customer();
-    void add_employee();
+    employee& add_employee(bool add_type = 0);
     void delete_employee();
     void add_service();
     void delete_service();

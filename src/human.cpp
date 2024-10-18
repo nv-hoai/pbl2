@@ -1,7 +1,4 @@
 #include"human.h"
-#include<iostream>
-#include<string>
-using namespace std;
 
 human::human(string first_name, string last_name, int age, bool gender): 
             first_name(first_name), last_name(last_name), age(age), gender(gender){
@@ -35,8 +32,22 @@ istream& operator>>(istream& is, human& h) {
 }
 
 ostream& operator<<(ostream& os, const human& h){
-    os << "Name: "<< h.first_name <<" "<< h.last_name << endl;
-    os << "Age: "<< h.age << endl;
-    os << "Gender: "<< ((h.gender)?"Female":"Male") << endl;
+    os <<setw(10)<<"Name: "<< h.first_name << h.last_name;
+    os <<setw(7)<<"Age: "<< h.age;
+    os <<setw(10)<<"Gender: "<< ((h.gender)?"Female":"Male") << "\n";
     return os;
+}
+
+stringstream& operator>>(stringstream& ss, human& h) {
+    char t;
+    string str;
+    
+    while (t != ';') {
+        ss >> str;
+        h.first_name += t+str+" ";
+        ss >> t;
+    }
+
+    ss >> h.last_name >> t >> h.age >> t >> h.gender;
+    return ss;
 }

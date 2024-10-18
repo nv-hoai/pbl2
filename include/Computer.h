@@ -17,7 +17,7 @@ class Computer {
 public:
     typedef unsigned int id_type;
 
-    Computer(std::string c_info = "No info", ComputerState c_state = Idle);
+    Computer(string c_info = "", ComputerState c_state = Idle);
     Computer(const Computer&);
     ~Computer();
 
@@ -25,7 +25,7 @@ public:
         return id;
     }
 
-    void add_device(std::string device_name);
+    void add_device(string device_name);
     void update_device_state(Device::id_type id, bool state);
     void show_all_devices();
     void update_position(int position) {
@@ -38,7 +38,7 @@ public:
 private:
     id_type id;
     int position;
-    std::string info;
+    string info;
     DoublyLinkedList<Device> devices;
     ComputerState current_state;
 

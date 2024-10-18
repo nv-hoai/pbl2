@@ -2,7 +2,7 @@
 
 Computer::id_type Computer::computer_count = 0;
 
-Computer::Computer(std::string c_info, ComputerState c_state): info(c_info), current_state(c_state) {
+Computer::Computer(string c_info, ComputerState c_state): info(c_info), current_state(c_state) {
     id = computer_count++;
     position = -1;
     add_device("monitor");
@@ -26,7 +26,7 @@ Computer::~Computer() {
     computer_count--;
 }
 
-void Computer::add_device(std::string device_name) {
+void Computer::add_device(string device_name) {
     Device* new_device = new Device(device_name);
     devices.append(new_device);
 }
@@ -39,18 +39,18 @@ void Computer::update_device_state(Device::id_type id, bool state) {
 
 void Computer::show_all_devices() {
     for(auto iter=devices.begin(); iter != devices.end(); ++iter) {
-        std::cout << *iter;
+        cout << *iter;
     }
 }
 
 istream& operator>>(istream& is, Computer& c) {
     //use to get input from keyboard only
-    std::cout << "Enter info for the computer: ";
-    std::getline(is, c.info);
-    std::cout << "Enter the position of computer: ";
+    cout << "Enter info for the computer: ";
+    getline(is, c.info);
+    cout << "Enter the position of computer: ";
     is >> c.position;
-    std::string t;
-    std::cout << "Enter the computer's state (Idle/Busy/Cracked): ";
+    string t;
+    cout << "Enter the computer's state (Idle/Busy/Cracked): ";
     is >> t;
     (t=="Idle")?c.current_state=Idle:(t=="Busy")?c.current_state=Busy:c.current_state=Cracked;
     return is;
@@ -68,9 +68,15 @@ ostream& operator<<(ostream& os, const Computer& c) {
 
 stringstream& operator>>(stringstream& ss, Computer& c) {
     //use to get input from file only
-    char t;
-    std::string str;
-    ss >> str; c.info = str+" "; ss >> str; c.info+=str + " "; ss >> str; c.info+=str; ss >> t; //ss>>t to ignore the separator ';'
+    char t = 0;
+    string str;
+
+    while (t != ';') {
+        ss >> str;
+        c.info += t+str+" ";
+        ss >> t;
+    }
+
     ss >> c.position; ss >> t;
     ss >> str; ss >> t;
     c.current_state = (str=="Idle")?Idle:(str=="Busy")?Busy:Cracked;
