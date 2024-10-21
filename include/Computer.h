@@ -25,6 +25,10 @@ public:
         return id;
     }
 
+    ComputerState get_state() const {
+        return current_state;
+    }
+
     void add_device(string device_name);
     void update_device_state(Device::id_type id, bool state);
     void show_all_devices();

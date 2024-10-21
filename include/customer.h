@@ -17,7 +17,7 @@ public:
         --customer_count;
     }
     
-    int getCustomerID() const {
+    customer::id_type get_id() const {
         return id;
     }
 

@@ -6,7 +6,7 @@ customer::customer(string first_name, string last_name, int age, bool gender ): 
     id = customer_count++;
 }
 
-customer::customer(const customer&h): human(h) {
+customer::customer(const customer&h): human((human&)h) {
     id = customer_count++;
 }
 

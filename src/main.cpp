@@ -14,8 +14,12 @@ int main() {
     MyManager.load_data(path);
 
     MyManager.show_all_computers();
+    MyManager.show_available_computer();
     MyManager.show_customers();
     MyManager.show_employees();
+    MyManager.show_available_service();
+    MyManager.register_service_for_customer();
+    MyManager.show_registerd_service();
 
     return 0;
 }

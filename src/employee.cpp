@@ -8,20 +8,20 @@ employee::employee(string first_name, string last_name, int age, bool gender,
                     days_month(days), base_salary(salary){
     start_time=0;
     total_earning=0;
-    employee_id=employee_cout++;
+    id=employee_cout++;
     time_worked=0;
 }
 
-employee::employee(const employee& x): human(x)
+employee::employee(const employee& e): human((human&)e)
 {
-    employee_id= employee_cout++;
-    position=x.position;
-    month_worked=x.month_worked;
-    days_month=x.days_month;
-    total_earning=x.total_earning;
-    start_time=x.start_time;
-    base_salary=x.base_salary;
-    time_worked=x.time_worked;
+    id= employee_cout++;
+    position=e.position;
+    month_worked=e.month_worked;
+    days_month=e.days_month;
+    total_earning=e.total_earning;
+    start_time=e.start_time;
+    base_salary=e.base_salary;
+    time_worked=e.time_worked;
 }
 
 employee::~employee() {
@@ -55,11 +55,19 @@ stringstream& operator>>(stringstream& ss, employee& e) {
 }
 
 ostream& operator<<(ostream& os, const employee& e) {
-    os << "Employee ID: " << e.employee_id << "\n";
+    os << "Employee ID: " << e.id << "\n";
     os << (human&)e;
     os << setw(14) << "Position: " << e.position;
     os << setw(16) << "Base salary: " << e.base_salary;
     os << setw(18) << "Month worked: " << e.month_worked;
     os << setw(25) << "Days worked in month: " << e.days_month << "\n";
     return os;
+}
+
+void employee::change_base_salary(int newsalary) {
+    base_salary = newsalary;
+}
+
+void employee::change_position(string newpos) {
+    position = newpos;
 }
